@@ -48,6 +48,6 @@ db.[COLLECTION_NAME].find([QUERY, PROJECTION])
 | $elemMatch | embedded documents 배열을 쿼리할 때 사용 |
 
 
-
+---
 #### [reference](https://velopert.com/479)
 
