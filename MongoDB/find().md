@@ -49,7 +49,5 @@ db.[COLLECTION_NAME].find([QUERY, PROJECTION])
 
 
 
-#### reference
-
-[MongoDB강좌3편](https://velopert.com/479)
+#### [reference](https://velopert.com/479)
 
