@@ -168,7 +168,7 @@ public class Application {
 }
 ```
 
-`@SpringBootApplication`은 [이전](https://github.com/project-565/plog-study/blob/main/spring/03.spring-boot.md#3-%EC%84%A4%EC%A0%95-%EC%9E%90%EB%8F%99%ED%99%94)에 이미 간단히 살펴본 바와 같이 `@SpringBootConfiguration`, `@EnableAutoConfiguration`, `@ComponentScan` 세 가지가 합쳐진 것인데,  각각의 역할은 다음과 같다.  
+`@SpringBootApplication`은 이전에 이미 간단히 살펴본 바와 같이 `@SpringBootConfiguration`, `@EnableAutoConfiguration`, `@ComponentScan` 세 가지가 합쳐진 것인데,  각각의 역할은 다음과 같다.  
 
 - `@SpringBootConfiguration`: Spring에 빈 팩토리를 위한 오브젝트의 설정을 담당하면서도 auto-scan이 가능함
 - `@EnableAutoConfiguration`: spring.factories에 미리 정의된 빈들을 등록
