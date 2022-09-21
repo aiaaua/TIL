@@ -84,3 +84,7 @@ Hibernate:
 `like_count`값을 넣어주지 않아 null값이기 때문에 쿼리에서 이 부분이 제외되는 것이고,  
 
 이렇게 할 경우 정상적으로 DB에 insert가 되는 것을 확인할 수 있다.  
+
+## Reference
+- https://dotoridev.tistory.com/6
+- https://velog.io/@titu/Spring-JPA-JPA%EC%97%90%EC%84%9C-insert%ED%95%98%EB%8A%94-%EA%B2%BD%EC%9A%B0-DB%EC%9D%98-default%EA%B0%92%EC%9D%B4-%EC%A0%81%EC%9A%A9%EB%90%98%EC%A7%80-%EC%95%8A%EC%9D%84-%EB%95%8C-DynamicInsert
