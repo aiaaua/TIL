@@ -40,14 +40,14 @@ Stream<Integer> stream = list.stream();
 
 | Method                                                       | Discription                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Stream<T> **filter**(Predicate<? super T> predicate)         | 해당 스트림에서 주어진 조건(predicate)에 맞는 요소만으로 구성된 새로운 스트림을 반환함 |
-| <R> Stream<R> **map**(Functoin<? super T, ? extends R> mapper) | 해당 스트림의 요소들을 주어진 함수에 인수로 전달하여, 그 반환값으로 이루어진 새로운 스트림을 반환함 |
-| <R> Stream<R> **flatMap**(Functoin<? super T, ? extends Stream<? extends R>> mapper) | 해당 스트림의 요소가 배열일 경우, 배열의 각 요소를 주어진 함수에 인수로 전달하여, 그 반환값으로 이루어진 새로운 스트림을 반환함 |
-| Stream<T> **distinct**()                                     | 해당 스트림에서 중복된 요소가 제거된 새로운 스트림을 반환함(내부적으로 Object 클래스의 equals() 메소드를 사용) |
-| Stream<T> **limit**(long maxSize)                            | 해당 스트림에서 전달된 개수만큼의 요소만으로 이루어진 새로운 스트림을 반환함 |
-| Stream<T> **peek**(Consumer<? super T> action)               | 결과 스트림으로부터 각 요소를 소모하여 추가로 명시된 동작(action)을 수행하여 새로운 스트림을 생성하여 반환함 |
-| Stream<T> **skip**(long n)                                   | 해당 스트림의 첫 번째 요소부터 전달된 개수만큼의 요소를 제외한 나머지 요소만으로 이루어진 새로운 스트림을 반환함 |
-| Stream<T> **sorted**()<br/>Stream<T> **sorted**(Comparator<? super T> comparator) | 해당 스트림을 주어진 비교자(comparator)를 이용하여 정렬, 비교자를 전달하지 않으면 영문사전 순(natural order)으로 정렬함 |
+| Stream<T> **filter**(Predicate<? super T> predicate)         | 해당 stream에서 주어진 조건(predicate)에 맞는 요소만으로 구성된 새로운 stream을 반환함 |
+| <R> Stream<R> **map**(Functoin<? super T, ? extends R> mapper) | 해당 stream의 요소들을 주어진 함수에 인수로 전달하여, 그 반환값으로 이루어진 새로운 stream을 반환함 |
+| <R> Stream<R> **flatMap**(Functoin<? super T, ? extends Stream<? extends R>> mapper) | 해당 stream의 요소가 배열일 경우, 배열의 각 요소를 주어진 함수에 인수로 전달하여, 그 반환값으로 이루어진 새로운 stream을 반환함 |
+| Stream<T> **distinct**()                                     | 해당 stream에서 중복된 요소가 제거된 새로운 stream을 반환함(내부적으로 Object 클래스의 equals() 메소드를 사용) |
+| Stream<T> **limit**(long maxSize)                            | 해당 stream에서 전달된 개수만큼의 요소만으로 이루어진 새로운 stream을 반환함 |
+| Stream<T> **peek**(Consumer<? super T> action)               | 결과 stream으로부터 각 요소를 소모하여 추가로 명시된 동작(action)을 수행하여 새로운 stream을 생성하여 반환함 |
+| Stream<T> **skip**(long n)                                   | 해당 stream의 첫 번째 요소부터 전달된 개수만큼의 요소를 제외한 나머지 요소만으로 이루어진 새로운 stream을 반환함 |
+| Stream<T> **sorted**()<br/>Stream<T> **sorted**(Comparator<? super T> comparator) | 해당 stream을 주어진 비교자(comparator)를 이용하여 정렬, 비교자를 전달하지 않으면 영문사전 순(natural order)으로 정렬함 |
 
 ### Stream 필터링
 
@@ -142,18 +142,18 @@ Stream<Integer> stream = list.stream();
 
 | Method                                                       | Discription                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| void forEach(Consumer<? super T> action)                     | 스트림의 각 요소에 대해 해당 요소를 소모하여 명시된 동작을 수행함 |
-| Optional<T> reduce(BinaryOperator<T> accumulator)<br/>T reduce(T identity, BinaryOperator<T> accumulator) | 처음 두 요소를 가지고 연산을 수행한 뒤, 그 결과와 다음 요소를 가지고 또 다시 연산을 수행함<br />이런 식으로 해당 스트림의 모든 요소를 소모하여 연산을 수행하고, 그 결과를 반환함 |
-| Optional<T> findFirst()<br/>Optional<T> findAny()            | 해당 스트림에서 첫 번째 요소를 참조하는 Optional 객체를 반환함(findAny() 메소드는 병렬 스트림일 때 사용함) |
-| boolean anyMatch(Predicate<? super T> predicate)             | 해당 스트림의 일부 요소가 특정 조건을 만족할 경우에 true를 반환함 |
-| boolean allMatch(Predicate<? super T> predicate)             | 해당 스트림의 모든 요소가 특정 조건을 만족할 경우에 true를 반환함 |
-| boolean noneMatch(Predicate<? super T> predicate)            | 해당 스트림의 모든 요소가 특정 조건을 만족하지 않을 경우에 true를 반환함 |
-| long count()                                                 | 해당 스트림의 요소의 개수를 반환함                           |
-| Optional<T> max(Comparator<? super T> comparator)            | 해당 스트림의 요소 중에서 가장 큰 값을 가지는 요소를 참조하는 Optional 객체를 반환함 |
-| Optional<T> min(Comparator<? super T> comparator)            | 해당 스트림의 요소 중에서 가장 작은 값을 가지는 요소를 참조하는 Optional 객체를 반환함 |
-| T sum()                                                      | 해당 스트림의 모든 요소에 대해 합을 구하여 반환함            |
-| Optional<T> average()                                        | 해당 스트림의 모든 요소에 대해 평균값을 구하여 반환함        |
-| <R,A> R collect(Collector<? super T,A,R> collector)          | 인수로 전달되는 Collectors 객체에 구현된 방법대로 스트림의 요소를 수집함 |
+| void forEach(Consumer<? super T> action)                     | stream의 각 요소에 대해 해당 요소를 소모하여 명시된 동작을 수행함 |
+| Optional<T> reduce(BinaryOperator<T> accumulator)<br/>T reduce(T identity, BinaryOperator<T> accumulator) | 처음 두 요소를 가지고 연산을 수행한 뒤, 그 결과와 다음 요소를 가지고 또 다시 연산을 수행함<br />이런 식으로 해당 stream의 모든 요소를 소모하여 연산을 수행하고 그 결과를 반환함 |
+| Optional<T> findFirst()<br/>Optional<T> findAny()            | 해당 stream에서 첫 번째 요소를 참조하는 Optional 객체를 반환함(findAny() 메소드는 병렬 stream일 때 사용함) |
+| boolean anyMatch(Predicate<? super T> predicate)             | 해당 stream의 일부 요소가 특정 조건을 만족할 경우에 true를 반환함 |
+| boolean allMatch(Predicate<? super T> predicate)             | 해당 stream의 모든 요소가 특정 조건을 만족할 경우에 true를 반환함 |
+| boolean noneMatch(Predicate<? super T> predicate)            | 해당 stream의 모든 요소가 특정 조건을 만족하지 않을 경우에 true를 반환함 |
+| long count()                                                 | 해당 stream의 요소의 개수를 반환함                           |
+| Optional<T> max(Comparator<? super T> comparator)            | 해당 stream의 요소 중에서 가장 큰 값을 가지는 요소를 참조하는 Optional 객체를 반환함 |
+| Optional<T> min(Comparator<? super T> comparator)            | 해당 stream의 요소 중에서 가장 작은 값을 가지는 요소를 참조하는 Optional 객체를 반환함 |
+| T sum()                                                      | 해당 stream의 모든 요소에 대해 합을 구하여 반환함            |
+| Optional<T> average()                                        | 해당 stream의 모든 요소에 대해 평균값을 구하여 반환함        |
+| <R,A> R collect(Collector<? super T,A,R> collector)          | 인수로 전달되는 Collectors 객체에 구현된 방법대로 stream의 요소를 수집함 |
 
 ### Stream 요소 출력
 
