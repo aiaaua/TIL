@@ -108,21 +108,29 @@ Stream<Integer> stream = list.stream();
 
 ### Stream 제한
 
-- `limit()`
+- `limit()` 메서드는 첫 번째 요소부터 전달된 갯수만큼의 요소만으로 이루어진 새로운 스트림을 반환함 
 
   ```java
-  
+  List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+  Stream<Integer> list = list.stream();
+  Stream<Integer> list2 = list.limit(5);
+
+  // [1, 2, 3, 4, 5]
   ```
 
-- `skip()`
+- `skip()` 메서드는 첫 번째 요소부터 전달된 갯수만큼의 요소를 제외한 나머지 요소로만 이루어진 새로운 스트림을 반환함 
 
   ```java
-  
+  List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+  Stream<Integer> list = list.stream();
+  Stream<Integer> list2 = list.skip(5);
+
+  // [6, 7, 8, 9, 10]
   ```
 
 ### Stream 정렬
 
-- `sorted()`
+- `sorted()` 메서드는 스트림의 요소들이 어떤 기준으로 정렬되어 전달하는 새로운 스트림을 반환함
 
   ```java
   
@@ -247,3 +255,4 @@ Stream<Integer> stream = list.stream();
 - https://codechacha.com/ko/stream-filter/
 - https://codechacha.com/ko/java8-stream-distinct/
 - https://codechacha.com/ko/java8-stream-limit-skip/
+- https://codechacha.com/ko/java8-stream-sorted/
