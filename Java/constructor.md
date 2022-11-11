@@ -43,4 +43,6 @@ CLASS_NAME(인수1, 인수2, ...) {...}
 - http://www.tcpschool.com/java/java_methodConstructor_constructor
 
 - https://kephilab.tistory.com/47
+- https://dingue.tistory.com/14
+- https://www.daleseo.com/lombok-popular-annotations/
 
