@@ -133,15 +133,19 @@ Stream<Integer> stream = list.stream();
 - `sorted()` 메서드는 스트림의 요소들이 어떤 기준으로 정렬되어 전달하는 새로운 스트림을 반환함
 
   ```java
-  
+
   ```
 
 ### Stream 연산 결과 확인
 
-- `peek()`
+- `peek()` 메서드는 전체 요소를 반복하는 루핑에 해당하는 메서드로 이를 통해 연산결과 등을 확인함  
+- `forEach()` 메서드와 동일하게 stream의 요소를 소모하는 연산이지만, 중간 연산이므로 최종 연산 메서드가 실행되지 않으면 동작하지 않음  
 
   ```java
-  
+    List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+  Stream<Integer> list = list.stream()
+                             .peek(System.out::println)
+                             .sum(); // 최종연산이 있어 peek도 정상 실행
   ```
 
 ## Stream API 최종 연산
@@ -256,3 +260,4 @@ Stream<Integer> stream = list.stream();
 - https://codechacha.com/ko/java8-stream-distinct/
 - https://codechacha.com/ko/java8-stream-limit-skip/
 - https://codechacha.com/ko/java8-stream-sorted/
+- https://cornswrold.tistory.com/299
