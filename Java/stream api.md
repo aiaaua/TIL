@@ -131,9 +131,30 @@ Stream<Integer> stream = list.stream();
 ### Stream 정렬
 
 - `sorted()` 메서드는 스트림의 요소들이 어떤 기준으로 정렬되어 전달하는 새로운 스트림을 반환함
+- 기본적으로 String에 대한 Comparable이 구현되어있으며, 다른 정렬기준이 필요하다면 인자로 전달
+- 역순으로 정렬하고 싶다면 `.reversed()`를 붙임
 
   ```java
-
+  List<String> langs = Arrays.asList("java", "kotlin", "haskell", "ruby", "smalltalk");
+  langs.stream()
+       .sorted()
+       .forEach(System.out::println);
+  // haskell
+  // java
+  // kotlin
+  // ruby
+  // smalltalk
+  ```
+  ```java
+  List<String> langs = Arrays.asList("java", "kotlin", "haskell", "ruby", "smalltalk");
+  langs.stream()
+       .sorted(Comparator.comparing(String::length))
+       .forEach(System.out::println);
+  // java
+  // ruby
+  // kotlin
+  // haskell
+  // smalltalk
   ```
 
 ### Stream 연산 결과 확인
