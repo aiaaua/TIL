@@ -163,7 +163,7 @@ Stream<Integer> stream = list.stream();
 - `forEach()` 메서드와 동일하게 stream의 요소를 소모하는 연산이지만, 중간 연산이므로 최종 연산 메서드가 실행되지 않으면 동작하지 않음  
 
   ```java
-    List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+  List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
   Stream<Integer> list = list.stream()
                              .peek(System.out::println)
                              .sum(); // 최종연산이 있어 peek도 정상 실행
@@ -190,10 +190,14 @@ Stream<Integer> stream = list.stream();
 
 ### Stream 요소 출력
 
-`forEach()`
+`forEach()` 메서드는 List, Map 등을 순회하는데 사용하는 최종연산임  
+단, 반복문에서 특정 조건일 경우 순회를 중단할 수 없으므로 비효율적인 부분이 있음  
+또한 동시성이 보장되지 않으므로 일반적으로 명시된 동작에서 상태를 수정한다면 오류가 발생할 수 있음  
+따라서 객체의 데이터를 다룰 때 `forEach()`를 사용한다면 주의할 필요가 있음  
 
 ```java
-
+  List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+  list.forEach(System.out::println);
 ```
 
 ### Stream 요소 소모
