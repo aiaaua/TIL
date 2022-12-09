@@ -202,23 +202,37 @@ Stream<Integer> stream = list.stream();
 
 ### Stream 요소 소모
 
-`reduce()`
+`reduce()` 메서드는 stream의 요소들을 하나의 데이터로 만드는 작업을 수행함  
+연산하는 부분은 직접 구현해 인자로 전달해야 하며, 초기값도 인자로 전달할 수 있음  
 
 ```java
+  Stream<Integer> numbers = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+  Optional<Integer> sum = numbers.reduce(10, (x, y) -> x + y);
+  sum.ifPresent(s -> System.out.println("sum: " + s));
+  // sum: 65
 ```
 
 ### Stream 요소 검색
 
-- `findFirst()`
+- `findFirst()` 조건에 일치하는 요소들 중 순서가 가장 앞에 있는 요소 1개를 optional로 리턴하며, 일치하는 요소가 없다면 empty가 리턴됨  
 
-  ```java
-  ```
+```java
+  List<String> elements = Arrays.asList("a", "a1", "b", "b1", "c", "c1");
+  Optional<String> firstElement = elements.stream()
+                                          .filter(s -> s.startsWith("b")).findFirst();
+  System.out.println("findFirst: " + firstElement.get());
+  // findFirst: b
+```
 
-- `findAny()`
+- `findAny()` 가장 먼저 탐색되는 요소를 반환  
 
-  ```java
-  
-  ```
+```java
+  List<String> elements = Arrays.asList("a", "a1", "b", "b1", "c", "c1");
+  Optional<String> firstElement = elements.stream()
+                                          .filter(s -> s.startsWith("b")).findAny();
+  System.out.println("findFirst: " + firstElement.get());
+  // findAny: b
+```
 
 ### Stream 요소 검사
 
@@ -271,9 +285,24 @@ Stream<Integer> stream = list.stream();
 
 ### Stream 요소 수집
 
-`stream` 요소의 수집 용도별로 `collect()`
+`collect()` 메서드는 Stream 데이터를 변형 등의 처리를 하고 원하는 자료형으로 반환함  
+아래와 같은 기능 등을 제공함  
+- Stream의 아이템들을 List 또는 Set 자료형으로 반환
+- Stream의 아이템들을 joining
+- Stream의 아이템들을 sorting하여 가장 큰 객체 리턴
+- Stream의 아이템들의 평균값을 리턴
+
 
 ```java
+  Stream<String> fruits = Stream.of("banana", "apple", "mango", "kiwi", "peach", "cherry", "lemon");
+  HashSet<String> fruitHashSet = fruits.collect(HashSet::new, HashSet::add, HashSet::addAll);
+```
+위의 예제와 같이 `supplier`, `accumulator`, `combiner` 3개의 인자를 받아 Stream의 요소들을 다른 데이터로 변환할 수 있으나  
+`Collectors`라는 라이브러리를 통해 3개의 인자를 넣지 않고도 기본적인 기능을 제공받을 수 있음  
+
+```java
+  Stream<String> fruits = Stream.of("banana", "apple", "mango", "kiwi", "peach", "cherry", "lemon");
+  Set<String> fruitSet = fruits.collect(Collectors.toSet());
 ```
 
 
@@ -285,4 +314,7 @@ Stream<Integer> stream = list.stream();
 - https://codechacha.com/ko/java8-stream-distinct/
 - https://codechacha.com/ko/java8-stream-limit-skip/
 - https://codechacha.com/ko/java8-stream-sorted/
+- https://codechacha.com/ko/java8-stream-reduction/
+- https://codechacha.com/ko/java8-stream-difference-findany-findfirst/
+- https://codechacha.com/ko/java8-stream-collect/
 - https://cornswrold.tistory.com/299
