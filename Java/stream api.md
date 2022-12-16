@@ -214,7 +214,7 @@ Stream<Integer> stream = list.stream();
 
 ### Stream 요소 검색
 
-- `findFirst()` 조건에 일치하는 요소들 중 순서가 가장 앞에 있는 요소 1개를 optional로 리턴하며, 일치하는 요소가 없다면 empty가 리턴됨  
+- `findFirst()` 메서드는 조건에 일치하는 요소들 중 순서가 가장 앞에 있는 요소 1개를 optional로 리턴하며, 일치하는 요소가 없다면 empty가 리턴됨  
 
 ```java
   List<String> elements = Arrays.asList("a", "a1", "b", "b1", "c", "c1");
@@ -224,7 +224,7 @@ Stream<Integer> stream = list.stream();
   // findFirst: b
 ```
 
-- `findAny()` 가장 먼저 탐색되는 요소를 반환  
+- `findAny()` 메서드는 가장 먼저 탐색되는 요소를 반환  
 
 ```java
   List<String> elements = Arrays.asList("a", "a1", "b", "b1", "c", "c1");
@@ -236,20 +236,34 @@ Stream<Integer> stream = list.stream();
 
 ### Stream 요소 검사
 
-- `anyMatch()`
+- `anyMatch()` 메서드는 Stream에 조건에 부합하는 객체가 1개라도 있는지 탐색하고 boolean 타입으로 결괴를 리턴함  
 
   ```java
+    List<String> elements = Arrays.asList("a", "a1", "b", "b1", "c", "c1");
+
+    boolean anyMatch = elements.stream().anyMatch(s -> s.startsWith("b"));
+    System.out.println("anyMatch: " + (anyMatch ? "true" : "false"));
+    // anyMatch: true
   ```
 
-- `allMatch()`
+- `allMatch()` 메서드는 모든 객체가 조건에 부합하는지 탐색하고 boolean 타입으로 결괴를 리턴함  
 
   ```java
+    List<String> elements = Arrays.asList("a", "a1", "b", "b1", "c", "c1");
+
+    boolean anyMatch = elements.stream().allMatch(s -> s.startsWith("b"));
+    System.out.println("allMatch: " + (allMatch ? "true" : "false"));
+    // allMatch: false
   ```
 
-- `noneMatch()`
+- `noneMatch()` 메서드는 조건에 부합하는 객체가 없는지 탐색하고 boolean 타입으로 결괴를 리턴함  
 
   ```java
-  
+    List<String> elements = Arrays.asList("a", "a1", "b", "b1", "c", "c1");
+
+    boolean anyMatch = elements.stream().noneMatch(s -> s.startsWith("b"));
+    System.out.println("noneMatch: " + (noneMatch ? "true" : "false"));
+    // noneMatch: false
   ```
 
 ### Stream 요소 통계
