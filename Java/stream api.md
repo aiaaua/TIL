@@ -224,7 +224,7 @@ Stream<Integer> stream = list.stream();
   // findFirst: b
 ```
 
-- `findAny()` 메서드는 가장 먼저 탐색되는 요소를 반환  
+- `findAny()` 메서드는 가장 먼저 탐색되는 요소를 리턴  
 
 ```java
   List<String> elements = Arrays.asList("a", "a1", "b", "b1", "c", "c1");
@@ -256,7 +256,7 @@ Stream<Integer> stream = list.stream();
     // allMatch: false
   ```
 
-- `noneMatch()` 메서드는 조건에 부합하는 객체가 없는지 탐색하고 boolean 타입으로 결괴를 리턴함  
+- `noneMatch()` 메서드는 조건에 부합하는 객체가 없는지 탐색하고 boolean 타입으로 결과를 리턴함  
 
   ```java
     List<String> elements = Arrays.asList("a", "a1", "b", "b1", "c", "c1");
@@ -268,30 +268,41 @@ Stream<Integer> stream = list.stream();
 
 ### Stream 요소 통계
 
-- `count()`
+- `count()` 메서드는 stream의 요소들을 처리한 뒤 하나의 값으로 산출하는 리덕션이며, 스트림 요소의 총 개수를 리턴  
 
   ```java
+    List<String> words = Arrays.asList("book", "desk", "keyboard", "mouse", "cup");
+   	int count = (int) words.stream().filter(w->w.contains("o")).count();
+   	System.out.println("count >" + count);
+    // count > 3
   ```
 
-- `min()`
+- `min()` 메서드도 리덕션이며, 스트림 요소 중 최소값을 리턴  
 
   ```java
+    List<Integer> cal = Arrays.asList(49, 123, 22, 55, 21);
+    int min = cal.stream().min(Comparator.comparing(x-> x)).get();
+    System.out.println("min >" + min);
+    // min > 21
   ```
 
-- `max()`
+- `max()` 메서드도 리덕션이며, 스트림 요소 중 최값을 리턴  
 
   ```java
-  
+    List<Integer> cal = Arrays.asList(49, 123, 22, 55, 21);
+    int max = cal.stream().max(Comparator.comparing(x-> x)).get();
+    System.out.println("max >" + max);
+    // max > 123
   ```
 
 ### Stream 요소 연산
 
-- `sum()`
+- `sum()`메서드도 리덕션이며, 스트림 요소의 총합을 리턴  
 
   ```java
   ```
 
-- `average()`
+- `average()`메서드도 리덕션이며, 스트림 요소 의 평균값을 리턴  
 
   ```java
   
@@ -331,4 +342,5 @@ Stream<Integer> stream = list.stream();
 - https://codechacha.com/ko/java8-stream-reduction/
 - https://codechacha.com/ko/java8-stream-difference-findany-findfirst/
 - https://codechacha.com/ko/java8-stream-collect/
+- https://codechacha.com/ko/java8-summarystatistics/
 - https://cornswrold.tistory.com/299
