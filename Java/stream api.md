@@ -300,12 +300,19 @@ Stream<Integer> stream = list.stream();
 - `sum()`메서드도 리덕션이며, 스트림 요소의 총합을 리턴  
 
   ```java
+    List<Integer> cal = Arrays.asList(1, 2, 3, 4, 5);
+    long sum = Arrays.stream(cal).sum();
+    System.out.println("sum >" + sum);
+    // sum > 15
   ```
 
 - `average()`메서드도 리덕션이며, 스트림 요소 의 평균값을 리턴  
 
   ```java
-  
+    List<Integer> cal = Arrays.asList(1, 2, 3, 4, 5);
+    double avg = Arrays.stream(cal).average().getAsDouble();
+    System.out.println("avg >" +avg);
+    // avg > 3
   ```
 
 ### Stream 요소 수집
