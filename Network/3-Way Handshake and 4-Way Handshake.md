@@ -46,6 +46,28 @@ PAR은 Postive ACK를 받을 때까지 데이터 유닛을 재전송하기 때�
 
 ## 4-Way Handshake
 
+클라이언트와 서버의 연결을 해제(Connection Termination)하는 과정  
+
+TCP는 `Abrupt Connection Release`와 `Graceful Connection Release` 두 가지 연결 해제 방식이 있는데, 이 중에 `Graceful Connection Release`일 때 4-Way Handshake가 발생함  
+
+### Work
+
+![image](https://user-images.githubusercontent.com/55227276/220962208-18c7aee9-1270-4cc0-af14-57c4add9638b.png)
+
+#### 1. FIN + ACK
+
+클라이언트가 `close()`를 호출하여 접속을 끊음  
+
+#### 2. ACK
+
+
+
+#### 3. FIN
+
+
+
+#### 4. ACK
+
 
 
 
